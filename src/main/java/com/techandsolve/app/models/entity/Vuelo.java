@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,11 +26,29 @@ public class Vuelo implements Serializable{
 	@Column(name = "CODIGO")
 	private String codigo;
 	
+	@Column(name = "ORIGEN")
+	private String origen;
+	
+	@Column(name = "DESTINO")
+	private String destino;
+	
 	@Column(name = "PRECIO")
 	private String precio;
 	
+	@Column(name = "PRECIO_ALTA")
+	private String precioAlta;
+	
 	@Column(name = "FECHA_VUELO")
 	private Date fechaVuelo;
+	
+	public Vuelo() {}
+
+	public Vuelo(String codigo, String precio,String precioAlta, Date fechaVuelo) {
+		this.codigo = codigo;
+		this.precio = precio;
+		this.fechaVuelo = fechaVuelo;
+		this.precioAlta = precioAlta;
+	}
 
 	public Long getId() {
 		return id;
@@ -59,6 +80,30 @@ public class Vuelo implements Serializable{
 
 	public void setFechaVuelo(Date fechaVuelo) {
 		this.fechaVuelo = fechaVuelo;
+	}
+
+	public String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
+
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+
+	public String getPrecioAlta() {
+		return precioAlta;
+	}
+
+	public void setPrecioAlta(String precioAlta) {
+		this.precioAlta = precioAlta;
 	}
 	
 	

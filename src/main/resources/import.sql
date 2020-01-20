@@ -1,3 +1,29 @@
-INSERT INTO vuelo (codigo, precio, fechaVuelo) VALUES('ASD-569', 800, NOW());
-INSERT INTO vuelo (codigo, precio, fechaVuelo) VALUES('KKL-723', 250, NOW());
-INSERT INTO vuelo (codigo, precio, fechaVuelo) VALUES('QWE_117', 350, NOW());
+
+
+CREATE TABLE `reserva` (
+  `idreserva` int(11) NOT NULL AUTO_INCREMENT,
+  `NUM_RESERVA` varchar(45) DEFAULT NULL,
+  `CEDULA` varchar(45) DEFAULT NULL,
+  `USUARIO` varchar(45) DEFAULT NULL,
+  `VUELO` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idreserva`),
+  KEY `FK3y8g6ioytcu9ukd33ticofjrf` (`VUELO`),
+  CONSTRAINT `FK3y8g6ioytcu9ukd33ticofjrf` FOREIGN KEY (`VUELO`) REFERENCES `vuelo` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+
+CREATE TABLE `vuelo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `CODIGO` varchar(45) DEFAULT NULL,
+  `ORIGEN` varchar(45) DEFAULT NULL,
+  `DESTINO` varchar(45) DEFAULT NULL,
+  `PRECIO` varchar(45) NOT NULL,
+  `PRECIO_ALTA` varchar(45) DEFAULT NULL,
+  `FECHA_VUELO` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1
+
+INSERT INTO test.vuelo (CODIGO, ORIGEN, DESTINO, PRECIO, PRECIO_ALTA, FECHA_VUELO) VALUES('ASDL69','Bogota', 'Medellin','800', '1000', '2020-01-16T13:00:00');
+INSERT INTO test.vuelo (CODIGO, ORIGEN, DESTINO, PRECIO, PRECIO_ALTA, FECHA_VUELO) VALUES('QWXT69','Medellin', 'Bogota', '800', '1000', '2020-01-20T11:00:00');
+
+INSERT INTO test.reserva (NUM_RESERVA, CEDULA, USUARIO, VUELO) VALUES('RKHE13', '1121871723','Carlos', 1);
+INSERT INTO test.reserva (NUM_RESERVA, CEDULA, USUARIO, VUELO) VALUES('PWTD45', '66760824', 'Luis', 2);
